@@ -1,5 +1,6 @@
 import { area, line } from "d3-shape";
 import { scaleLinear } from "d3-scale";
+import { RYAN_VISITED } from "./passport";
 import { LEVELS, MONTHS, MONTHS_LONG, formatFull, formatVisits, monthList, type Dataset, type Park } from "./data";
 
 const levelLabel = (id: string) => LEVELS.find((l) => l.id === id)!.label;
@@ -71,7 +72,7 @@ export function renderPark(el: HTMLElement, park: Park, data: Dataset) {
     <article class="park-card">
       <header class="park-top">
         <div>
-          <p class="kicker">${park.region}</p>
+          <p class="kicker">${park.region}${RYAN_VISITED.has(park.code) ? ' <span class="been">✓ Ryan has been here</span>' : ""}</p>
           <h2 id="park-name">${park.name} National Park</h2>
           <p class="park-meta">${park.state}</p>
         </div>

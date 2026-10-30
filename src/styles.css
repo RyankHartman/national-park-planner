@@ -242,6 +242,32 @@ button { font: inherit; color: inherit; }
 .plan-off p { margin: 10px 0 0; }
 .plan-empty { color: var(--ink-2); }
 
+/* ---------- Passport ---------- */
+.pp-head { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: center; justify-content: space-between; margin-bottom: 24px; }
+.pp-tabs { display: flex; gap: 8px; }
+.pp-bar { display: flex; align-items: center; gap: 14px; flex: 1; min-width: 220px; max-width: 420px; }
+.pp-count { font-family: var(--font-display); font-weight: 700; font-size: 2rem; line-height: 1; }
+.pp-count small { font-size: 1rem; color: var(--ink-2); }
+.pp-meter { height: 10px; }
+.pp-meter i { background: var(--forest); transition: width .4s ease; }
+.stamps { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 18px 12px; }
+.stamp { display: flex; flex-direction: column; align-items: center; gap: 8px; padding: 6px 2px; border: 0; background: none; cursor: pointer; text-align: center; border-radius: 14px; }
+.stamp-ring {
+  position: relative; width: 78px; height: 78px; display: grid; place-items: center;
+  border: 2px dashed var(--line); border-radius: 50%; color: var(--ink-2);
+  font: 700 0.85rem var(--font-ui); letter-spacing: 0.06em; transition: transform .2s ease, background .2s, border-color .2s;
+}
+.stamp-check { position: absolute; right: -2px; top: -2px; width: 24px; height: 24px; display: grid; place-items: center; border-radius: 50%; font-size: 0.8rem; }
+.stamp-name { font-size: 0.78rem; line-height: 1.25; color: var(--ink-2); }
+.stamp.on .stamp-ring {
+  border: 3px double var(--forest-ink); background: var(--forest); color: var(--forest-ink);
+  box-shadow: 0 0 0 3px var(--forest); transform: rotate(var(--tilt));
+}
+.stamp.on .stamp-check { background: var(--accent); color: #fff; }
+.stamp.on .stamp-name { color: var(--ink); font-weight: 600; }
+.stamp:hover .stamp-ring { border-color: var(--forest); transform: rotate(var(--tilt)) scale(1.05); }
+.been { margin-left: 8px; padding: 2px 8px; border-radius: 999px; background: var(--forest); color: var(--forest-ink); letter-spacing: 0.04em; }
+
 /* ---------- About & footer ---------- */
 .about-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .about-grid article { padding: 22px; border-radius: 18px; background: var(--surface); border: 1px solid var(--line); }
@@ -258,6 +284,8 @@ button { font: inherit; color: inherit; }
   .theme-toggle { margin-left: auto; }
 }
 @media (max-width: 560px) {
+  .stamps { grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 14px 8px; }
+  .stamp-ring { width: 64px; height: 64px; font-size: 0.75rem; }
   .brand { font-size: 1.08rem; white-space: nowrap; gap: 8px; }
   .brand-mark { width: 26px; height: 26px; }
   .cal-bars { height: 150px; }

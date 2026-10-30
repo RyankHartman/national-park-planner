@@ -15,6 +15,7 @@
 - **Interactive map:** slide through the year and watch 63 parks move between quiet and peak
 - **Plan by month:** pick a month and get the calmest parks, filterable by region
 - **47-year trend:** annual visitors for each park since 1979
+- **Passport:** see the 20 parks I've visited, or tap stamps to track your own (saved on your device, no account needed)
 - **Shareable views:** the URL carries the park and month (e.g. `?park=ZION&month=11`)
 - Search with keyboard support, light and dark themes, works on phones, respects reduced-motion settings
 
@@ -52,7 +53,6 @@ Built with TypeScript, Vite, D3 (map projection and charts) and no UI framework.
 
 - **Weather and access overlay:** combine crowd levels with typical temperatures and road-opening dates, so "quiet" and "pleasant" are both visible
 - **Day-of-week patterns** where parks publish them (weekends vs. weekdays matter as much as months)
-- **"My parks" passport:** mark the parks you've visited (I'm at 20 of 63)
 
 ---
 

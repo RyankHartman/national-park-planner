@@ -4,6 +4,7 @@ import { createMap } from "./map";
 import { createPlan } from "./plan";
 import { renderHeroCard, renderPark } from "./park";
 import { createSearch } from "./search";
+import { createPassport } from "./passport";
 
 const $ = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const QUICK_PICKS = ["ZION", "YOSE", "GRSM", "ACAD", "GLAC", "ARCH"];
@@ -128,6 +129,13 @@ async function start() {
       label: $("plan-month-label"),
     },
     month,
+    (code) => selectPark(code, true),
+  );
+
+  // ---------- Passport ----------
+  createPassport(
+    data,
+    { tabs: $("passport-tabs"), title: $("passport-title"), sub: $("passport-sub"), bar: $("passport-bar"), grid: $("passport-grid") },
     (code) => selectPark(code, true),
   );
 
