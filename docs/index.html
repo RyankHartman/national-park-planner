@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>National Park Planner · Find the quiet season at every national park</title>
+    <meta name="description" content="When should you visit Zion, Yosemite or the Great Smokies to beat the crowds? Crowd calendars for all 63 U.S. national parks, built from official NPS visitation data." />
+    <meta property="og:title" content="National Park Planner · Find the quiet season at every national park" />
+    <meta property="og:description" content="Crowd calendars for all 63 U.S. national parks, built from official NPS visitation data." />
+    <meta name="theme-color" content="#f4efe4" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1712" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='16' fill='%232f5d50'/%3E%3Cpath d='M5 24 13 11l5 8 3-4 6 9z' fill='%23f4efe4'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <script>
+      try {
+        const t = localStorage.getItem("npp-theme");
+        if (t === "light" || t === "dark") document.documentElement.dataset.theme = t;
+      } catch (e) {}
+    </script>
+    <script type="module" crossorigin src="./assets/index-CCFgGQyp.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-Dq8NWv9f.css">
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="National Park Planner home">
+        <svg class="brand-mark" viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="16" /><path d="M5 24 13 11l5 8 3-4 6 9z" /></svg>
+        <span>National Park Planner</span>
+      </a>
+      <nav class="site-nav" aria-label="Sections">
+        <a href="#map">Map</a>
+        <a href="#park">Parks</a>
+        <a href="#plan">Plan by month</a>
+        <a href="#about">About</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark theme">
+        <svg class="i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" /><path d="M12 1.8v2.6M12 19.6v2.6M1.8 12h2.6M19.6 12h2.6M4.8 4.8l1.8 1.8M17.4 17.4l1.8 1.8M4.8 19.2l1.8-1.8M17.4 6.6l1.8-1.8" /></svg>
+        <svg class="i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 14.6A8.5 8.5 0 0 1 9.4 3.5a8.5 8.5 0 1 0 11.1 11.1z" /></svg>
+      </button>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top">
+        <div class="hero-copy">
+          <p class="kicker">63 national parks · 47 years of official visitor counts</p>
+          <h1>Find the quiet season at every national park.</h1>
+          <p class="lede">Crowd calendars built from the National Park Service’s own monthly visitor data, so you can see the views without the traffic jam.</p>
+          <div class="search" id="search">
+            <label class="visually-hidden" for="search-input">Search for a national park</label>
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5" /><path d="m15.5 15.5 5 5" /></svg>
+            <input id="search-input" type="text" role="combobox" aria-expanded="false" aria-controls="search-list" aria-autocomplete="list" autocomplete="off" placeholder="Search a park, like Zion or Acadia" />
+            <ul id="search-list" role="listbox" hidden></ul>
+          </div>
+          <div class="quick-picks" id="quick-picks" aria-label="Popular parks"></div>
+        </div>
+        <figure class="hero-card" id="hero-card" aria-live="polite"></figure>
+      </section>
+
+      <section class="section" id="map" aria-labelledby="map-title">
+        <div class="section-head">
+          <p class="kicker">Explore</p>
+          <h2 id="map-title">How crowded is each park in <span id="map-month-label">July</span>?</h2>
+          <p class="section-sub">Each dot is a park, sized by annual visitors and colored by how busy that month is compared with the park’s own peak.</p>
+        </div>
+        <div class="map-wrap">
+          <div class="map-controls">
+            <button class="play" id="map-play" type="button" aria-label="Play through the months">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path class="i-play" d="M8 5v14l11-7z" /><path class="i-pause" d="M7 5h4v14H7zM13 5h4v14h-4z" /></svg>
+            </button>
+            <div class="month-slider">
+              <label class="visually-hidden" for="map-month">Month</label>
+              <input type="range" id="map-month" min="0" max="11" step="1" value="6" />
+              <div class="month-ticks" aria-hidden="true"></div>
+            </div>
+          </div>
+          <div class="map-canvas" id="map-canvas"></div>
+          <div class="map-tooltip" id="map-tooltip" role="status" hidden></div>
+          <div class="map-footer">
+            <div class="legend" id="legend" aria-label="Crowd level legend"></div>
+            <div class="territories" id="territories"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section park-section" id="park" aria-labelledby="park-name" aria-live="polite"></section>
+
+      <section class="section" id="plan" aria-labelledby="plan-title">
+        <div class="section-head">
+          <p class="kicker">Plan by month</p>
+          <h2 id="plan-title">The calmest parks in <span id="plan-month-label">April</span></h2>
+          <p class="section-sub">Ranked by how quiet each park is that month, relative to its own peak. Parks that are likely closed or hard to reach are listed separately.</p>
+        </div>
+        <div class="plan-controls">
+          <div class="month-chips" id="plan-months" role="radiogroup" aria-label="Month"></div>
+          <div class="region-chips" id="plan-regions" role="group" aria-label="Regions"></div>
+        </div>
+        <ol class="plan-list" id="plan-list"></ol>
+        <details class="plan-off" id="plan-off"></details>
+      </section>
+
+      <section class="section about" id="about" aria-labelledby="about-title">
+        <div class="section-head">
+          <p class="kicker">About</p>
+          <h2 id="about-title">How it works</h2>
+        </div>
+        <div class="about-grid">
+          <article>
+            <h3>The data</h3>
+            <p>Official monthly <strong>recreation visits</strong> for all 63 national parks, 1979–2025, from the <a id="source-link" href="https://irma.nps.gov/DataStore/Reference/Profile/2317666" target="_blank" rel="noreferrer">NPS Visitor Use Statistics data package</a> (public domain). Years before a park’s national park designation count its earlier status, such as a national monument.</p>
+          </article>
+          <article>
+            <h3>The method</h3>
+            <p>Each park’s crowd calendar averages <strong>2022–2024</strong>, recent years unaffected by the COVID-19 closures or the fall 2025 federal shutdown. A month’s crowd level compares its visits with that park’s busiest month. “Best time to go” picks the quietest months that still see at least a quarter of peak traffic.</p>
+          </article>
+          <article>
+            <h3>The caveats</h3>
+            <p>Visits measure crowds across a whole park, not at one trailhead or on one weekend. Quiet months are often quiet for a reason (heat, snow, road closures), so check the park’s conditions before you go. Off‑season months are flagged, not recommended.</p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p><strong>National Park Planner</strong> is a project by <a href="https://ryan-builds-stories.lovable.app" target="_blank" rel="noreferrer">Ryan Hartman</a>, who has explored 20 of the 63 parks so far.</p>
+      <p><a href="https://github.com/RyankHartman/national-park-planner" target="_blank" rel="noreferrer">Code on GitHub</a> · Data: National Park Service (public domain) · Not affiliated with the NPS.</p>
+    </footer>
+
+    <script src="https://knightbot-cornell1.vercel.app/widget.js" data-theme="light" defer></script>
+  </body>
+</html>
